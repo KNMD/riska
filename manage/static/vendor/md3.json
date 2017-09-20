@@ -1,0 +1,14 @@
+{
+  "rate": 0.001,
+  "open": 2335.213,
+  "kLineData": [
+    {"label": "2013/1/24", "open": 2320.26, "close": 2320.26, "lowest": 2287.3, "highest": 2362.94},
+    {"label": "2013/1/24", "open": 2300, "close": 2891.26, "lowest": 2288.3, "highest": 2308.94},
+    {"label": "2013/1/24", "open": 2295.26, "close": 2346.26, "lowest": 2287.3, "highest": 2362.94},
+    {"label": "2013/1/24", "open": 2347.26, "close": 2358.26, "lowest": 2337.3, "highest": 2363.94},
+    {"label": "2013/1/24", "open": 2360.26, "close": 2382.26, "lowest": 2347.3, "highest": 2383.94},
+    {"label": "2013/1/24", "open": 2347.26, "close": 2358.26, "lowest": 2337.3, "highest": 2363.94},
+    {"label": "2013/1/24", "open": 2320.26, "close": 2320.26, "lowest": 2287.3, "highest": 2362.94},
+    {"label": "2013/1/24", "open": 2300, "close": 2891.26, "lowest": 2288.3, "highest": 2308.94}
+  ]
+}

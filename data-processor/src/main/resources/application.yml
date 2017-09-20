@@ -1,0 +1,14 @@
+data:
+  init:
+    meta-path: /Users/hanzhe/Desktop/IC
+    label: IC主力连续
+spring:
+  data:
+    mongodb:
+      host: localhost
+      database: riska
+#      port: 9999
+#      username: riskaAdmin
+#      password: riskaAdmin123QWE!@#
+logging.level:
+  org.springframework.data.mongodb.core.MongoTemplate: INFO

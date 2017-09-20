@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title></title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="../vendor/morrisjs/morris.css" rel="stylesheet">
+
+    <!-- DataTables CSS -->
+    <link href="../vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="../vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="../vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+
+    <link href="../vendor/datatables-buttons/buttons.dataTables.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../vendor/bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom CSS -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+        .mar5 {
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <!-- Navigation -->
+    <nav id="navigation" class="navbar navbar-default navbar-static-top" style="margin-bottom: 0">
+
+    </nav>
+
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header"></h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row mar5">
+                            <div class="col-lg-3">
+                                <div class="input-group date form_date" data-date="" data-link-field="dtp_input2">
+                                    <span class="input-group-addon">开始日期</span>
+                                    <input id="start" name="tradingDay" class="form-control" value="" />
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="input-group date form_date" data-date="" data-link-field="dtp_input2">
+                                    <span class="input-group-addon">结束日期</span>
+                                    <input id="end" name="tradingDay" class="form-control" value="" />
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="input-group">
+                                    <span class="input-group-addon">合约号</span>
+                                    <input name="instrumentID" class="form-control" value="IC">
+                                </div><!-- /input-group -->
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="input-group">
+                                    <span class="input-group-addon">等价比例(%)</span>
+                                    <input type="number" min="0" name="rate" class="form-control">
+                                </div><!-- /input-group -->
+                            </div>
+                            <div class="col-lg-1">
+                                <button type="button" id="search" class="btn btn-primary">查询</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+        <div class="row">
+
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-line-chart"></i>&nbsp;&nbsp;走势
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="row" style="margin-left: 10px;">
+                            <h5 id="open-price">开盘价：<span></span></h5>
+                            <h5 id="range">步长：<span></span></h5>
+                            <h5 id="times"><span></span></h5>
+                        </div>
+                        <div id="md-chart" style="width: 100%;height:400px;"></div>
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /#page-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+<!-- jQuery -->
+<script src="../vendor/jquery/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/bootstrap/js/plug/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../vendor/bootstrap/js/plug/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../vendor/jquery/plugins/jquery-dateFormat.min.js" charset="UTF-8"></script>
+<!-- Metis Menu Plugin JavaScript -->
+<script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+<!-- Morris Charts JavaScript -->
+<script src="../vendor/raphael/raphael.min.js"></script>
+<script src="../vendor/morrisjs/morris.min.js"></script>
+<script src="../vendor/jquery/plugins/loadingoverlay.min.js"></script>
+<script src="../vendor/echarts/echarts.min.js"></script>
+<script src="../vendor/echarts/vintage.js"></script>
+<!-- Custom Theme JavaScript -->
+<script src="../dist/js/sb-admin-2.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+//        init
+        var start = $("#start"),
+            end = $("#end");
+        start.val("2016-01-04");
+        end.val("2016-01-05");
+        $(".form_date").datetimepicker({
+            language:  'zh-CN',
+            format: 'yyyy-mm-dd',
+            keyboardNavigation: false,
+            weekStart: 1,
+            todayBtn:  1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: true
+        });
+
+        function splitData(rawData) {
+            var categoryData = [];
+            var values = [];
+            var volumes = [];
+            for (var i = 0; i < rawData.length; i++) {
+                categoryData.push(rawData[i].splice(0, 1)[0]);
+                values.push(rawData[i]);
+                volumes.push([i, rawData[i][4], rawData[i][0] > rawData[i][1] ? 1 : -1]);
+            }
+            return {
+                categoryData: categoryData,
+                values: values,
+                volumes: volumes
+            };
+        }
+
+        function calculateMA(dayCount, data) {
+            var result = [];
+            for (var i = 0, len = data.values.length; i < len; i++) {
+                if (i < dayCount) {
+                    result.push('-');
+                    continue;
+                }
+                var sum = 0;
+                for (var j = 0; j < dayCount; j++) {
+                    sum += data.values[i - j][1];
+                }
+                result.push(sum / dayCount);
+            }
+            return result;
+        }
+
+        function coverData(apiResponse) {
+            var coveredData = [],
+                rawData = apiResponse.klineData;
+            apiResponse.open = apiResponse.open/10;
+            apiResponse.scope.range = apiResponse.scope.range/10;
+            apiResponse.scope.offset = apiResponse.scope.offset/10;
+            apiResponse.scope.min = apiResponse.scope.min/10;
+            apiResponse.scope.max = apiResponse.scope.max/10;
+            apiResponse.scope.base = apiResponse.scope.base/10;
+            for (var i = 0; i < rawData.length; i++) {
+                var line = [rawData[i].label, rawData[i].open/10, rawData[i].close/10, rawData[i].lowest/10, rawData[i].highest/10];
+                coveredData.push(line);
+            }
+            return coveredData;
+        }
+
+        var myChart;
+        $("#search").on("click", function () {
+            var instrumentID = $("input[name='instrumentID']");
+            if('' == instrumentID.val()) {
+                instrumentID.parent().addClass("has-error");
+                return;
+            }else {
+                instrumentID.parent().removeClass("has-error");
+            }
+            var startDate = start.val().split("-").join(""),
+                endDate = end.val().split("-").join(""),
+                param = {
+                    start: startDate,
+                    end: endDate,
+                    instrumentID: instrumentID.val()
+                },
+                rate = $("input[name='rate']");
+            if('' != rate.val()) {
+                param.rate = Math.abs(parseFloat(rate.val()) / 100);
+            }
+            var setTimeout, times = 0;
+            $.get(restURL + "/history/k/async", param, function (cacheKey) {
+                if(null != cacheKey && '' != cacheKey) {
+                    $.LoadingOverlay("show");
+                    setTimeout = window.setTimeout(function () {
+                        getCacheData(cacheKey);
+                    }, 1000);
+                }
+            });
+
+            function getCacheData(key) {
+                $("#times").find("span").text(++times);
+                $.ajax({
+                    url : restURL + "/history/k/cache?key=" + key,
+                    method: 'GET',
+                    dataType: 'json',
+                    success: function (rawData) {
+                        $.LoadingOverlay("hide");
+                        times = 0;
+                        renderKLine(rawData);
+                    },
+                    beforeSend: function(){},
+                    error: function (xhr) {
+                        if(xhr.status == 404) {
+                            if(times == 60) {
+                                alert("数据获取超时");
+                                $.LoadingOverlay("hide");
+                                times = 0;
+                            }else{
+                                window.setTimeout(function () {
+                                    getCacheData(key);
+                                }, 1000);
+                            }
+                        }else{
+                            $.LoadingOverlay("hide");
+                            times = 0;
+                            alert("数据加载失败(" + xhr.status + ")");
+                        }
+                    },
+                    complete : function () {}
+                })
+            }
+
+            function renderKLine(rawData) {
+                var data = splitData(coverData(rawData));
+                if(null == myChart) {
+                    myChart = echarts.init(document.getElementById('md-chart'));
+                }
+                $("#open-price").find("span").text(rawData.open);
+                $("#range").find("span").text(rawData.scope.range);
+                $("input[name='instrumentID']").val(rawData.instrument);
+                $("input[name='rate']").val(rawData.scope.rate * 100);
+                var dataMA30 = calculateMA(30, data);
+                var dataMA120 = calculateMA(120, data);
+                var option = {
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: {
+                            type: 'cross'
+                        }
+                    },
+                    legend: {
+                        data: ['日K', 'MA30', 'MA120']
+                    },
+                    grid: {
+                        left: '5%',
+                        right: '5%',
+                        bottom: '5%'
+                    },
+                    xAxis: {
+                        type: 'category',
+                        data: data.categoryData,
+                        scale: true,
+                        boundaryGap : false,
+                        axisLine: {onZero: false},
+                        splitLine: {show: false},
+                        splitNumber: 20,
+                        min: 'dataMin',
+                        max: 'dataMax'
+                    },
+                    yAxis: {
+                        scale: true,
+                        splitArea: {
+                            show: true
+                        }
+                    },
+                    dataZoom: [
+                        {
+                            type: 'inside',
+                            start: 0,
+                            end: 100
+                        },
+                        {
+                            show: true,
+                            type: 'slider',
+                            y: '90%',
+                            start: 50,
+                            end: 100
+                        }
+                    ],
+                    series: [
+                        {
+                            name: '日K',
+                            type: 'candlestick',
+                            data: data.values,
+                            markPoint: {
+                                tooltip: {
+                                    formatter: function (param) {
+                                        return param.name + '<br>' + (param.data.coord || '');
+                                    }
+                                }
+                            }
+                        }, {
+                            name: 'MA30',
+                            type: 'line',
+                            data: dataMA30,
+                            smooth: true,
+                            showSymbol: false,
+                            lineStyle: {
+                                normal: {
+                                    width: 1
+                                }
+                            }
+                        }, {
+                            name: 'MA120',
+                            type: 'line',
+                            data: dataMA120,
+                            smooth: true,
+                            showSymbol: false,
+                            lineStyle: {
+                                normal: {
+                                    width: 1
+                                }
+                            }
+                        }
+                    ]
+                };
+                myChart.setOption(option);
+            }
+
+//            myChart.dispose();
+//            console.log(option)
+//            myChart.setOption(option)
+        })
+    });
+</script>
+
+</body>
+
+</html>

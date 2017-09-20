@@ -1,0 +1,22 @@
+server:
+  port: 8089
+  context-path: /riska/api/rest
+kingstarAPI:
+  startCron:
+  endCron:
+  logPath: ${app.path}/logs/
+  host: tcp://123.150.36.18:13159
+  brokerID: 0E76AFEA
+  userID: 80531
+  password: 111111
+  ## default market data id
+  marketDataID: IH1710
+spring:
+  data:
+    mongodb:
+      host: 60.30.111.99
+      database: riska
+      port: 10005
+      username: riskaAdmin
+      password: riskaAdmin123QWE!@#
+

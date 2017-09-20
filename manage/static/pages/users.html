@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title></title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="../vendor/morrisjs/morris.css" rel="stylesheet">
+
+    <!-- DataTables CSS -->
+    <link href="../vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="../vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="../vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+
+    <link href="../vendor/datatables-buttons/buttons.dataTables.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../vendor/bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom CSS -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <!-- Navigation -->
+    <nav id="navigation" class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+
+    </nav>
+
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header"></h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-user"></i>&nbsp;&nbsp;用户列表
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example"></table>
+                        <!-- /.table-responsive -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /#page-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+<!-- Modal -->
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">编辑用户</h4>
+            </div>
+            <form id="user-form" role="form">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="control-label hide"></label>
+                        <input type="text" class="form-control" name="loginName" placeholder="登录名" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label hide"></label>
+                        <input type="password" class="form-control" name="password" placeholder="密码" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label hide"></label>
+                        <input type="email" class="form-control" name="mail" placeholder="邮箱">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label hide"></label>
+                        <input type="phone" class="form-control" name="phone" placeholder="手机">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="submit" class="btn btn-primary">保存</button>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<!-- jQuery -->
+<script src="../vendor/jquery/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../vendor/bootstrap/js/plug/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../vendor/bootstrap/js/plug/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../vendor/jquery/plugins/jquery-dateFormat.min.js" charset="UTF-8"></script>
+<!-- Metis Menu Plugin JavaScript -->
+<script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+<!-- Morris Charts JavaScript -->
+<script src="../vendor/raphael/raphael.min.js"></script>
+<script src="../vendor/morrisjs/morris.min.js"></script>
+<script src="../vendor/jquery/plugins/loadingoverlay.min.js"></script>
+<script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+<script src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+<script src="../vendor/datatables-buttons/dataTables.buttons.min.js"></script>
+<script src="../vendor/datatables-buttons/buttons.flash.min.js"></script>
+<script src="../vendor/datatables-buttons/jszip.min.js"></script>
+<script src="../vendor/datatables-buttons/pdfmake.min.js"></script>
+<script src="../vendor/datatables-buttons/vfs_fonts.js"></script>
+<script src="../vendor/datatables-buttons/buttons.print.min.js"></script>
+<script src="../vendor/datatables-buttons/buttons.html5.min.js"></script>
+<script src="../vendor/jquery/plugins/jquery.validate.min.js"></script>
+<script src="../vendor/jquery/plugins/messages_zh.min.js"></script>
+<!-- Custom Theme JavaScript -->
+<script src="../dist/js/sb-admin-2.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        // table section
+        var dataTable = $('#dataTables-example').DataTable({
+            ajax: AjaxUtil.createDataTableAJaxObj(restURL + "/users/page/for/dataTable"),
+            columns: [
+                { title: "登录名", "data": "loginName" },
+                { title: "创建时间", "data": "createTime", render: function (value) {
+                    var JsonDateValue = new Date(value);
+                    return DataTableUtil.dateFormat(JsonDateValue);
+                }},
+                { title: "邮箱地址", "data": "mail" },
+                { title: "手机号", "data": "phone" },
+                { title: "最后一次登录时间", "data": "lastLoginTime", render: function (value) {
+                    var JsonDateValue = new Date(value);
+                    return DataTableUtil.dateFormat(JsonDateValue);
+                }},
+                { title: "登录次数", "data": "loginTimes" },
+            ],
+            language: {
+                url: '../vendor/datatables/dataTable.zh-CN.json'
+            },
+            dom: 'Bfrtip',
+            deferLoading: 0,
+            buttons: [
+                {
+                    text: "<i class=\"fa fa-plus-circle\"></i>",
+                    action: function () {
+                        $('#myModal').modal('show')
+                    }
+                }, {
+                    text: "<i class=\"fa fa-edit\"></i>",
+                    action: function () {
+                        alert(1)
+                    }
+                }, {
+                    text: "<i class=\"fa fa-close\"></i>",
+                    action: function () {
+                        alert(1)
+                    }
+                }
+            ],
+            responsive: true
+        });
+
+        $("#user-form").validate({
+            success: function (error, element) {
+                $(element).parent(".form-group").removeClass("has-error").addClass("has-success").
+                    find("label.control-label").addClass("hide").text("");
+            },
+            errorPlacement: function(error, element) {
+                element.parent(".form-group").removeClass("has-success").addClass("has-error")
+                    .find("label.control-label").removeClass("hide").text(error[0].innerText);
+
+            }
+        });
+
+    });
+</script>
+
+</body>
+
+</html>

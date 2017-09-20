@@ -1,0 +1,354 @@
+2017-09-06 15:46:18.541  INFO 8137 --- [main] me.zyly.riska.api.holder.Boot            : Starting Boot v1.0-SNAPSHOT with PID 8137 (/home/hanzhe/work/riska/kingstar-api-holder/target/kingstar-api-holder.jar started by hanzhe in /home/hanzhe/work/riska/kingstar-api-holder)
+2017-09-06 15:46:18.563 DEBUG 8137 --- [main] me.zyly.riska.api.holder.Boot            : Running with Spring Boot v1.5.3.RELEASE, Spring v4.3.8.RELEASE
+2017-09-06 15:46:18.563  INFO 8137 --- [main] me.zyly.riska.api.holder.Boot            : The following profiles are active: qa
+2017-09-06 15:46:18.887  INFO 8137 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@5fcfe4b2: startup date [Wed Sep 06 15:46:18 CST 2017]; root of context hierarchy
+2017-09-06 15:46:24.977  INFO 8137 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8089 (http)
+2017-09-06 15:46:25.032  INFO 8137 --- [main] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2017-09-06 15:46:25.038  INFO 8137 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.14
+2017-09-06 15:46:25.341  INFO 8137 --- [localhost-startStop-1] o.a.c.c.C.[.[.[/riska/api/rest]          : Initializing Spring embedded WebApplicationContext
+2017-09-06 15:46:25.342  INFO 8137 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 6455 ms
+2017-09-06 15:46:25.677  INFO 8137 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-09-06 15:46:25.698  INFO 8137 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-09-06 15:46:25.699  INFO 8137 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-09-06 15:46:25.699  INFO 8137 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-09-06 15:46:25.699  INFO 8137 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-09-06 15:46:26.751  INFO 8137 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2017-09-06 15:46:26.753  INFO 8137 --- [main] org.mongodb.driver.cluster               : Adding discovered server localhost:27017 to client view of cluster
+2017-09-06 15:46:27.079  INFO 8137 --- [cluster-ClusterId{value='59afa7d28cf0d91fc917dd84', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Exception in monitor thread while connecting to server localhost:27017
+
+com.mongodb.MongoSocketOpenException: Exception opening socket
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:63)
+	at com.mongodb.connection.InternalStreamConnection.open(InternalStreamConnection.java:115)
+	at com.mongodb.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:113)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at com.mongodb.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:57)
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:58)
+	... 3 common frames omitted
+
+2017-09-06 15:46:28.330  INFO 8137 --- [main] org.mongodb.driver.cluster               : No server chosen by WritableServerSelector from cluster description ClusterDescription{type=UNKNOWN, connectionMode=MULTIPLE, serverDescriptions=[ServerDescription{address=localhost:27017, type=UNKNOWN, state=CONNECTING, exception={com.mongodb.MongoSocketOpenException: Exception opening socket}, caused by {java.net.ConnectException: Connection refused (Connection refused)}}]}. Waiting for 30000 ms before timing out
+2017-09-06 15:47:12.379  INFO 8182 --- [main] me.zyly.riska.api.holder.Boot            : Starting Boot v1.0-SNAPSHOT with PID 8182 (/home/hanzhe/work/riska/kingstar-api-holder/target/kingstar-api-holder.jar started by hanzhe in /home/hanzhe/work/riska/kingstar-api-holder)
+2017-09-06 15:47:12.403 DEBUG 8182 --- [main] me.zyly.riska.api.holder.Boot            : Running with Spring Boot v1.5.3.RELEASE, Spring v4.3.8.RELEASE
+2017-09-06 15:47:12.404  INFO 8182 --- [main] me.zyly.riska.api.holder.Boot            : The following profiles are active: qa
+2017-09-06 15:47:12.756  INFO 8182 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@5fcfe4b2: startup date [Wed Sep 06 15:47:12 CST 2017]; root of context hierarchy
+2017-09-06 15:47:19.199  INFO 8182 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8089 (http)
+2017-09-06 15:47:19.251  INFO 8182 --- [main] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2017-09-06 15:47:19.257  INFO 8182 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.14
+2017-09-06 15:47:19.567  INFO 8182 --- [localhost-startStop-1] o.a.c.c.C.[.[.[/riska/api/rest]          : Initializing Spring embedded WebApplicationContext
+2017-09-06 15:47:19.568  INFO 8182 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 6812 ms
+2017-09-06 15:47:19.905  INFO 8182 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-09-06 15:47:19.915  INFO 8182 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-09-06 15:47:19.915  INFO 8182 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-09-06 15:47:19.916  INFO 8182 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-09-06 15:47:19.916  INFO 8182 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-09-06 15:47:20.970  INFO 8182 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2017-09-06 15:47:20.970  INFO 8182 --- [main] org.mongodb.driver.cluster               : Adding discovered server localhost:27017 to client view of cluster
+2017-09-06 15:47:21.168  INFO 8182 --- [cluster-ClusterId{value='59afa8088cf0d91ff655ba7a', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Exception in monitor thread while connecting to server localhost:27017
+
+com.mongodb.MongoSocketOpenException: Exception opening socket
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:63)
+	at com.mongodb.connection.InternalStreamConnection.open(InternalStreamConnection.java:115)
+	at com.mongodb.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:113)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at com.mongodb.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:57)
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:58)
+	... 3 common frames omitted
+
+2017-09-06 15:47:22.479  INFO 8182 --- [main] org.mongodb.driver.cluster               : No server chosen by WritableServerSelector from cluster description ClusterDescription{type=UNKNOWN, connectionMode=MULTIPLE, serverDescriptions=[ServerDescription{address=localhost:27017, type=UNKNOWN, state=CONNECTING, exception={com.mongodb.MongoSocketOpenException: Exception opening socket}, caused by {java.net.ConnectException: Connection refused (Connection refused)}}]}. Waiting for 30000 ms before timing out
+2017-09-06 15:49:02.897  INFO 8278 --- [main] me.zyly.riska.api.holder.Boot            : Starting Boot v1.0-SNAPSHOT with PID 8278 (/home/hanzhe/work/riska/kingstar-api-holder/target/kingstar-api-holder.jar started by hanzhe in /home/hanzhe/work/riska/kingstar-api-holder)
+2017-09-06 15:49:02.919 DEBUG 8278 --- [main] me.zyly.riska.api.holder.Boot            : Running with Spring Boot v1.5.3.RELEASE, Spring v4.3.8.RELEASE
+2017-09-06 15:49:02.920  INFO 8278 --- [main] me.zyly.riska.api.holder.Boot            : The following profiles are active: qa
+2017-09-06 15:49:03.241  INFO 8278 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7e0b37bc: startup date [Wed Sep 06 15:49:03 CST 2017]; root of context hierarchy
+2017-09-06 15:49:09.447  INFO 8278 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8089 (http)
+2017-09-06 15:49:09.476  INFO 8278 --- [main] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2017-09-06 15:49:09.479  INFO 8278 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.14
+2017-09-06 15:49:09.829  INFO 8278 --- [localhost-startStop-1] o.a.c.c.C.[.[.[/riska/api/rest]          : Initializing Spring embedded WebApplicationContext
+2017-09-06 15:49:09.830  INFO 8278 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 6589 ms
+2017-09-06 15:49:10.195  INFO 8278 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-09-06 15:49:10.211  INFO 8278 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-09-06 15:49:10.213  INFO 8278 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-09-06 15:49:10.214  INFO 8278 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-09-06 15:49:10.214  INFO 8278 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-09-06 15:49:11.345  INFO 8278 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7e0b37bc: startup date [Wed Sep 06 15:49:03 CST 2017]; root of context hierarchy
+2017-09-06 15:49:11.718  INFO 8278 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-09-06 15:49:11.723  INFO 8278 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-09-06 15:49:11.798  INFO 8278 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-09-06 15:49:11.799  INFO 8278 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-09-06 15:49:11.908  INFO 8278 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-09-06 15:49:12.989  INFO 8278 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2017-09-06 15:49:13.317  INFO 8278 --- [cluster-ClusterId{value='59afa8788cf0d92056dddf18', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Exception in monitor thread while connecting to server localhost:27017
+
+com.mongodb.MongoSocketOpenException: Exception opening socket
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:63)
+	at com.mongodb.connection.InternalStreamConnection.open(InternalStreamConnection.java:115)
+	at com.mongodb.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:113)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at com.mongodb.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:57)
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:58)
+	... 3 common frames omitted
+
+2017-09-06 15:49:14.715  INFO 8278 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2017-09-06 15:49:14.975  INFO 8278 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8089 (http)
+2017-09-06 15:49:14.993 DEBUG 8278 --- [main] m.z.r.a.holder.runner.MarketDataRunner   : Start MarketDataRunner Login ------------------------
+2017-09-06 15:49:14.994 DEBUG 8278 --- [main] m.z.r.a.holder.runner.MarketDataRunner   : login params : tcp://123.150.36.18:13159, 0E76AFEA, 80531, 111111,
+2017-09-06 15:49:15.414  INFO 8278 --- [main] org.bridj.BridJ                          : Failed to find a vtable for type CThostFtdcMdSpi
+2017-09-06 15:49:15.486  INFO 8278 --- [main] org.bridj.BridJ                          : Failed to find a vtable for type CThostFtdcMdApi
+2017-09-06 15:49:15.519  INFO 8278 --- [main] utoConfigurationReportLoggingInitializer : 
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
+2017-09-06 15:49:15.532 ERROR 8278 --- [main] o.s.boot.SpringApplication               : Application startup failed
+
+java.lang.UnsatisfiedLinkError: CThostFtdcMdApi.GetApiVersion()Lorg/bridj/Pointer;
+	at CThostFtdcMdApi.GetApiVersion(Native Method)
+	at me.zyly.riska.api.holder.runner.MarketDataRunner.run(MarketDataRunner.java:28)
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:776)
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:760)
+	at org.springframework.boot.SpringApplication.afterRefresh(SpringApplication.java:747)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1162)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1151)
+	at me.zyly.riska.api.holder.Boot.main(Boot.java:30)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.loader.MainMethodRunner.run(MainMethodRunner.java:48)
+	at org.springframework.boot.loader.Launcher.launch(Launcher.java:87)
+	at org.springframework.boot.loader.Launcher.launch(Launcher.java:50)
+	at org.springframework.boot.loader.JarLauncher.main(JarLauncher.java:51)
+
+2017-09-06 15:49:15.535  INFO 8278 --- [main] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7e0b37bc: startup date [Wed Sep 06 15:49:03 CST 2017]; root of context hierarchy
+2017-09-06 15:49:15.548  INFO 8278 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2017-09-06 16:00:12.103  INFO 8492 --- [main] me.zyly.riska.api.holder.Boot            : Starting Boot v1.0-SNAPSHOT with PID 8492 (/home/hanzhe/work/riska/kingstar-api-holder/target/kingstar-api-holder.jar started by hanzhe in /home/hanzhe/work/riska/kingstar-api-holder)
+2017-09-06 16:00:12.134 DEBUG 8492 --- [main] me.zyly.riska.api.holder.Boot            : Running with Spring Boot v1.5.3.RELEASE, Spring v4.3.8.RELEASE
+2017-09-06 16:00:12.134  INFO 8492 --- [main] me.zyly.riska.api.holder.Boot            : The following profiles are active: qa
+2017-09-06 16:00:12.469  INFO 8492 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7e0b37bc: startup date [Wed Sep 06 16:00:12 CST 2017]; root of context hierarchy
+2017-09-06 16:00:19.090  INFO 8492 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8089 (http)
+2017-09-06 16:00:19.141  INFO 8492 --- [main] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2017-09-06 16:00:19.147  INFO 8492 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.14
+2017-09-06 16:00:19.445  INFO 8492 --- [localhost-startStop-1] o.a.c.c.C.[.[.[/riska/api/rest]          : Initializing Spring embedded WebApplicationContext
+2017-09-06 16:00:19.445  INFO 8492 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 6976 ms
+2017-09-06 16:00:19.786  INFO 8492 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-09-06 16:00:19.802  INFO 8492 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-09-06 16:00:19.803  INFO 8492 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-09-06 16:00:19.803  INFO 8492 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-09-06 16:00:19.804  INFO 8492 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-09-06 16:00:20.922  INFO 8492 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7e0b37bc: startup date [Wed Sep 06 16:00:12 CST 2017]; root of context hierarchy
+2017-09-06 16:00:21.340  INFO 8492 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-09-06 16:00:21.344  INFO 8492 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-09-06 16:00:21.418  INFO 8492 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-09-06 16:00:21.418  INFO 8492 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-09-06 16:00:21.515  INFO 8492 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-09-06 16:00:22.669  INFO 8492 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2017-09-06 16:00:23.014  INFO 8492 --- [cluster-ClusterId{value='59afab168cf0d9212c717283', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Exception in monitor thread while connecting to server localhost:27017
+
+com.mongodb.MongoSocketOpenException: Exception opening socket
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:63)
+	at com.mongodb.connection.InternalStreamConnection.open(InternalStreamConnection.java:115)
+	at com.mongodb.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:113)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at com.mongodb.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:57)
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:58)
+	... 3 common frames omitted
+
+2017-09-06 16:00:24.558  INFO 8492 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2017-09-06 16:00:24.769  INFO 8492 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8089 (http)
+2017-09-06 16:00:24.782 DEBUG 8492 --- [main] m.z.r.a.holder.runner.MarketDataRunner   : Start MarketDataRunner Login ------------------------
+2017-09-06 16:00:24.784 DEBUG 8492 --- [main] m.z.r.a.holder.runner.MarketDataRunner   : login params : tcp://123.150.36.18:13159, 0E76AFEA, 80531, 111111,
+2017-09-06 16:00:25.193  INFO 8492 --- [main] org.bridj.BridJ                          : Failed to find a vtable for type ksmdapiex.CThostFtdcMdSpi
+2017-09-06 16:00:25.262  INFO 8492 --- [main] org.bridj.BridJ                          : Failed to find a vtable for type ksmdapiex.CThostFtdcMdApi
+2017-09-06 16:00:25.284  INFO 8492 --- [main] utoConfigurationReportLoggingInitializer : 
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
+2017-09-06 16:00:25.309 ERROR 8492 --- [main] o.s.boot.SpringApplication               : Application startup failed
+
+java.lang.UnsatisfiedLinkError: ksmdapiex.CThostFtdcMdApi.GetApiVersion()Lorg/bridj/Pointer;
+	at ksmdapiex.CThostFtdcMdApi.GetApiVersion(Native Method)
+	at me.zyly.riska.api.holder.runner.MarketDataRunner.run(MarketDataRunner.java:28)
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:776)
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:760)
+	at org.springframework.boot.SpringApplication.afterRefresh(SpringApplication.java:747)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1162)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1151)
+	at me.zyly.riska.api.holder.Boot.main(Boot.java:30)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.loader.MainMethodRunner.run(MainMethodRunner.java:48)
+	at org.springframework.boot.loader.Launcher.launch(Launcher.java:87)
+	at org.springframework.boot.loader.Launcher.launch(Launcher.java:50)
+	at org.springframework.boot.loader.JarLauncher.main(JarLauncher.java:51)
+
+2017-09-06 16:00:25.315  INFO 8492 --- [main] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7e0b37bc: startup date [Wed Sep 06 16:00:12 CST 2017]; root of context hierarchy
+2017-09-06 16:00:25.344  INFO 8492 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2017-09-06 16:16:55.504  INFO 9267 --- [main] me.zyly.riska.api.holder.Boot            : Starting Boot v1.0-SNAPSHOT with PID 9267 (/home/hanzhe/work/riska/kingstar-api-holder/target/kingstar-api-holder.jar started by hanzhe in /home/hanzhe/work/riska/kingstar-api-holder)
+2017-09-06 16:16:55.530 DEBUG 9267 --- [main] me.zyly.riska.api.holder.Boot            : Running with Spring Boot v1.5.3.RELEASE, Spring v4.3.8.RELEASE
+2017-09-06 16:16:55.530  INFO 9267 --- [main] me.zyly.riska.api.holder.Boot            : The following profiles are active: qa
+2017-09-06 16:16:55.890  INFO 9267 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7e0b37bc: startup date [Wed Sep 06 16:16:55 CST 2017]; root of context hierarchy
+2017-09-06 16:17:02.372  INFO 9267 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8089 (http)
+2017-09-06 16:17:02.423  INFO 9267 --- [main] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2017-09-06 16:17:02.429  INFO 9267 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.14
+2017-09-06 16:17:02.694  INFO 9267 --- [localhost-startStop-1] o.a.c.c.C.[.[.[/riska/api/rest]          : Initializing Spring embedded WebApplicationContext
+2017-09-06 16:17:02.694  INFO 9267 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 6804 ms
+2017-09-06 16:17:02.999  INFO 9267 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-09-06 16:17:03.017  INFO 9267 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-09-06 16:17:03.017  INFO 9267 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-09-06 16:17:03.018  INFO 9267 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-09-06 16:17:03.018  INFO 9267 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-09-06 16:17:04.075  INFO 9267 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7e0b37bc: startup date [Wed Sep 06 16:16:55 CST 2017]; root of context hierarchy
+2017-09-06 16:17:04.489  INFO 9267 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-09-06 16:17:04.492  INFO 9267 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-09-06 16:17:04.565  INFO 9267 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-09-06 16:17:04.565  INFO 9267 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-09-06 16:17:04.669  INFO 9267 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-09-06 16:17:05.825  INFO 9267 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2017-09-06 16:17:06.101  INFO 9267 --- [cluster-ClusterId{value='59afaf018cf0d9243397add3', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Exception in monitor thread while connecting to server localhost:27017
+
+com.mongodb.MongoSocketOpenException: Exception opening socket
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:63)
+	at com.mongodb.connection.InternalStreamConnection.open(InternalStreamConnection.java:115)
+	at com.mongodb.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:113)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at com.mongodb.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:57)
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:58)
+	... 3 common frames omitted
+
+2017-09-06 16:17:07.464  INFO 9267 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2017-09-06 16:17:07.678  INFO 9267 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8089 (http)
+2017-09-06 16:17:07.689 DEBUG 9267 --- [main] m.z.r.a.holder.runner.MarketDataRunner   : Start MarketDataRunner Login ------------------------
+2017-09-06 16:17:07.689 DEBUG 9267 --- [main] m.z.r.a.holder.runner.MarketDataRunner   : login params : tcp://123.150.36.18:13159, 0E76AFEA, 80531, 111111,
+2017-09-06 16:17:07.982  INFO 9267 --- [main] org.bridj.BridJ                          : Failed to find a vtable for type ksmdapiex.CThostFtdcMdSpi
+2017-09-06 16:17:08.171  INFO 9267 --- [main] org.bridj.BridJ                          : Failed to find a vtable for type ksmdapiex.CThostFtdcMdApi
+2017-09-06 16:17:08.194  INFO 9267 --- [main] utoConfigurationReportLoggingInitializer : 
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
+2017-09-06 16:17:08.214 ERROR 9267 --- [main] o.s.boot.SpringApplication               : Application startup failed
+
+java.lang.UnsatisfiedLinkError: ksmdapiex.CThostFtdcMdApi.GetApiVersion()Lorg/bridj/Pointer;
+	at ksmdapiex.CThostFtdcMdApi.GetApiVersion(Native Method)
+	at me.zyly.riska.api.holder.runner.MarketDataRunner.run(MarketDataRunner.java:28)
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:776)
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:760)
+	at org.springframework.boot.SpringApplication.afterRefresh(SpringApplication.java:747)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1162)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1151)
+	at me.zyly.riska.api.holder.Boot.main(Boot.java:30)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.loader.MainMethodRunner.run(MainMethodRunner.java:48)
+	at org.springframework.boot.loader.Launcher.launch(Launcher.java:87)
+	at org.springframework.boot.loader.Launcher.launch(Launcher.java:50)
+	at org.springframework.boot.loader.JarLauncher.main(JarLauncher.java:51)
+
+2017-09-06 16:17:08.220  INFO 9267 --- [main] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7e0b37bc: startup date [Wed Sep 06 16:16:55 CST 2017]; root of context hierarchy
+2017-09-06 16:17:08.244  INFO 9267 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2017-09-06 16:18:53.914  INFO 9332 --- [main] me.zyly.riska.api.holder.Boot            : Starting Boot v1.0-SNAPSHOT with PID 9332 (/home/hanzhe/work/riska/kingstar-api-holder/target/kingstar-api-holder.jar started by hanzhe in /home/hanzhe/work/riska/kingstar-api-holder)
+2017-09-06 16:18:53.938 DEBUG 9332 --- [main] me.zyly.riska.api.holder.Boot            : Running with Spring Boot v1.5.3.RELEASE, Spring v4.3.8.RELEASE
+2017-09-06 16:18:53.939  INFO 9332 --- [main] me.zyly.riska.api.holder.Boot            : The following profiles are active: qa
+2017-09-06 16:18:54.252  INFO 9332 --- [main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7e0b37bc: startup date [Wed Sep 06 16:18:54 CST 2017]; root of context hierarchy
+2017-09-06 16:19:00.267  INFO 9332 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8089 (http)
+2017-09-06 16:19:00.319  INFO 9332 --- [main] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2017-09-06 16:19:00.325  INFO 9332 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.14
+2017-09-06 16:19:00.687  INFO 9332 --- [localhost-startStop-1] o.a.c.c.C.[.[.[/riska/api/rest]          : Initializing Spring embedded WebApplicationContext
+2017-09-06 16:19:00.687  INFO 9332 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 6435 ms
+2017-09-06 16:19:01.043  INFO 9332 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-09-06 16:19:01.059  INFO 9332 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-09-06 16:19:01.060  INFO 9332 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-09-06 16:19:01.060  INFO 9332 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-09-06 16:19:01.060  INFO 9332 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-09-06 16:19:02.064  INFO 9332 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7e0b37bc: startup date [Wed Sep 06 16:18:54 CST 2017]; root of context hierarchy
+2017-09-06 16:19:02.436  INFO 9332 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-09-06 16:19:02.437  INFO 9332 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-09-06 16:19:02.513  INFO 9332 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-09-06 16:19:02.513  INFO 9332 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-09-06 16:19:02.606  INFO 9332 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-09-06 16:19:03.643  INFO 9332 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2017-09-06 16:19:03.830  INFO 9332 --- [cluster-ClusterId{value='59afaf778cf0d924749030c5', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Exception in monitor thread while connecting to server localhost:27017
+
+com.mongodb.MongoSocketOpenException: Exception opening socket
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:63)
+	at com.mongodb.connection.InternalStreamConnection.open(InternalStreamConnection.java:115)
+	at com.mongodb.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:113)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at com.mongodb.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:57)
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:58)
+	... 3 common frames omitted
+
+2017-09-06 16:19:05.149  INFO 9332 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2017-09-06 16:19:05.485  INFO 9332 --- [main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8089 (http)
+2017-09-06 16:19:05.496 DEBUG 9332 --- [main] m.z.r.a.holder.runner.MarketDataRunner   : Start MarketDataRunner Login ------------------------
+2017-09-06 16:19:05.498 DEBUG 9332 --- [main] m.z.r.a.holder.runner.MarketDataRunner   : login params : tcp://123.150.36.18:13159, 0E76AFEA, 80531, 111111,
+2017-09-06 16:19:05.806  INFO 9332 --- [main] org.bridj.BridJ                          : Failed to find a vtable for type ksmdapiex.CThostFtdcMdSpi
+2017-09-06 16:19:05.989  INFO 9332 --- [main] org.bridj.BridJ                          : Failed to find a vtable for type ksmdapiex.CThostFtdcMdApi
+2017-09-06 16:19:06.012  INFO 9332 --- [main] utoConfigurationReportLoggingInitializer : 
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
+2017-09-06 16:19:06.037 ERROR 9332 --- [main] o.s.boot.SpringApplication               : Application startup failed
+
+java.lang.UnsatisfiedLinkError: ksmdapiex.CThostFtdcMdApi.GetApiVersion()Lorg/bridj/Pointer;
+	at ksmdapiex.CThostFtdcMdApi.GetApiVersion(Native Method)
+	at me.zyly.riska.api.holder.runner.MarketDataRunner.run(MarketDataRunner.java:28)
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:776)
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:760)
+	at org.springframework.boot.SpringApplication.afterRefresh(SpringApplication.java:747)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1162)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1151)
+	at me.zyly.riska.api.holder.Boot.main(Boot.java:30)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.loader.MainMethodRunner.run(MainMethodRunner.java:48)
+	at org.springframework.boot.loader.Launcher.launch(Launcher.java:87)
+	at org.springframework.boot.loader.Launcher.launch(Launcher.java:50)
+	at org.springframework.boot.loader.JarLauncher.main(JarLauncher.java:51)
+
+2017-09-06 16:19:06.040  INFO 9332 --- [main] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7e0b37bc: startup date [Wed Sep 06 16:18:54 CST 2017]; root of context hierarchy
+2017-09-06 16:19:06.063  INFO 9332 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
