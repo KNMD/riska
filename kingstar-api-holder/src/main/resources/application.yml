@@ -10,7 +10,7 @@ kingstarAPI:
   userID: 80531
   password: 111111
   ## default market data id
-  marketDataID: IH1710
+  marketTypes: IH
 spring:
   data:
     mongodb:

@@ -20,7 +20,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/history")
-public class HistoryController {
+public class HistoryController extends LoginedController{
 
     private @Autowired QueryCacheService<KLineService.Md> queryCacheService;
     private @Autowired TaskExecutor taskExecutor;
@@ -31,17 +31,19 @@ public class HistoryController {
     public KLineService.Md k(@RequestParam int start,
                              @RequestParam int end,
                              @RequestParam String instrumentID,
+                             @RequestParam boolean equalsAlgorithm,
                              @RequestParam(required = false, defaultValue = Constants.DEFAULT_RATE) double rate) throws ParseException {
 
         long startTimestamp = sft.parse(String.valueOf(start)).getTime(),
                 endTimestamp = sft.parse(String.valueOf(end)).getTime();
-        return kLineService.equivalenceLine(instrumentID, startTimestamp, endTimestamp, rate);
+        return kLineService.equivalenceLine(instrumentID, startTimestamp, endTimestamp, rate, equalsAlgorithm);
     }
 
     @GetMapping("/k/async")
     public String kAsync(@RequestParam int start,
                              @RequestParam int end,
                              @RequestParam String instrumentID,
+                             @RequestParam boolean equalsAlgorithm,
                              @RequestParam(required = false, defaultValue = Constants.DEFAULT_RATE) double rate) throws ParseException {
 //        String key = DigestUtils.md5DigestAsHex(String.format(
 //                "%s_%s_%s_%s", start, end, instrumentID, rate).getBytes());
@@ -51,7 +53,7 @@ public class HistoryController {
         } catch (QueryCacheService.GetError getError) {
             taskExecutor.execute(()-> {
                 try {
-                    KLineService.Md md = k(start, end, instrumentID, rate);
+                    KLineService.Md md = k(start, end, instrumentID, equalsAlgorithm, rate);
                     queryCacheService.save(key, md, true);
                 } catch (ParseException e) {
                     throw new RuntimeException(e);

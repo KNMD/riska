@@ -32,7 +32,7 @@ public class KLineService {
      * @param rate 范围比例
      * @return 等价行情数据
      */
-    public Md equivalenceLine(String instrument, long start, long end, double rate) {
+    public Md equivalenceLine(String instrument, long start, long end, double rate, boolean equalsAlgorithm) {
         DBCollection collection = mongoTemplate.getCollection(MARKET_COLLECTION_NAME);
         Query query = Query.query(Criteria.where("instrument").is(instrument).and("tradeTimestamp")
                 .gte(start).lt(end)).with(new Sort(Sort.Direction.ASC, "tradeTimestamp"));
@@ -47,6 +47,7 @@ public class KLineService {
                 data.add(openPriceData);
             }
             Scope scope = new Scope.Algorithm.IC().calculate(rate, data.get(0).getOpen());
+            scope.setEqualsAlgorithm(equalsAlgorithm);
             LOGGER.debug("first data: {}", data.get(0));
             LOGGER.debug("first scope: {}", scope);
             while (cursor.hasNext()) {
@@ -65,34 +66,40 @@ public class KLineService {
     }
 
     public Scope compareForEquivalence(SingleMarketData current, List<SingleMarketData> data, Scope scope) {
+
         SingleMarketData parent = data.get(data.size() - 1);
         if(current.getTradingDay() != parent.getTradingDay()) {
             data.add(current);
+            boolean equalsAlgorithm = scope.isEqualsAlgorithm();
             scope = new Scope.Algorithm.IC().calculate(scope.getRate(), current.getOpen());
+            scope.setEqualsAlgorithm(equalsAlgorithm);
         }else {
-            if(scope.isForceAdd()) {
+            if(scope.isEqualsAlgorithm() && scope.isForceAdd()) {
                 data.add(current);
+                int center = (current.getOpen() - parent.getOpen()) / scope.getRange() * scope.getRange() + parent.getOpen();
+                scope.setMin(center - scope.getRange());
+                scope.setMax(center + scope.getRange());
                 scope.setForceAdd(false);
+                return scope;
             }else {
-                if(current.getOpen() < scope.getMin() || (current.getOpen() > scope.getMax())) {
-                    int offset = Math.abs(current.getOpen() - parent.getOpen()) / scope.getRange() * scope.getRange() + parent.getOpen();
-                    int oldmin = scope.getMin(), oldmax = scope.getMax();
-                    scope.setOffset(offset);
-                    scope.setMin(offset - scope.getRange());
-                    scope.setMax(offset + scope.getRange());
-                    LOGGER.debug("------------------------------------------------------------------");
-                    LOGGER.debug("parent: {}, current: {}, oldmin: {}, oldmax:{}",
-                            parent.getOpen(), current.getOpen(), oldmin, oldmax);
-                    LOGGER.debug("new center: {}, range:{}, newmin: {}, newmax: {}",
-                            offset, scope.getRange(), scope.getMin(), scope.getMax());
-                    LOGGER.debug("------------------------------------------------------------------");
+                if (current.getOpen() < scope.getMin() || current.getOpen() > scope.getMax()) {
+                    int center = (current.getOpen() - parent.getOpen()) / scope.getRange() * scope.getRange() + parent.getOpen();
+//                    LOGGER.debug("----------------------------第{}跟线------------------------------------------------------------------------------------------------------------------------------------", data.size());
+//                    LOGGER.debug("| 上一笔行情时间: {}, 上一笔开盘: {}, (低/高)区间: {}, 步长: {} ",
+//                            parent.getTime(), parent.getOpen(), String.format("(%s/%s)", scope.getMin(), scope.getMax()), scope.getRange());
+//                    LOGGER.debug("|   最新行情时间: {}, 最新开盘价: {}, (低/高)区间: {}, 中心点: {}",
+//                            current.getTime(), current.getOpen(), String.format("(%s/%s)", center - scope.getRange(), center + scope.getRange()), center);
+                    scope.setMin(center - scope.getRange());
+                    scope.setMax(center + scope.getRange());
                     data.add(current);
-
-                }else {
+                } else if (scope.isEqualsAlgorithm() && (current.getOpen() == scope.getMin() || current.getOpen() == scope.getMax())) {
                     parent.setClose(current.getOpen());
-                    if(current.getOpen() > parent.getHighest()) {
+                    scope.setForceAdd(true);
+                } else {
+                    parent.setClose(current.getOpen());
+                    if (current.getOpen() > parent.getHighest()) {
                         parent.setHighest(current.getOpen());
-                    }else if(current.getOpen() < parent.getLowest()) {
+                    } else if (current.getOpen() < parent.getLowest()) {
                         parent.setLowest(current.getOpen());
                     }
                 }
@@ -109,7 +116,7 @@ public class KLineService {
 //        return scope;
 //    }
     private SingleMarketData castToMd(BasicDBObject line, String priceFieldName) {
-        String label = line.getString("tradingDay");
+        String label = line.getInt("tradingDay") + " " + line.getString("updateTime");
         SingleMarketData singleMarketData = new SingleMarketData(label, line.getInt(priceFieldName));
         singleMarketData.setTradingDay(line.getInt("tradingDay"));
         return singleMarketData;

@@ -5,6 +5,7 @@ import ksmdapiex.CThostFtdcMdSpi;
 import ksuserapistructex.*;
 import lombok.Setter;
 import me.zyly.riska.core.domain.MarketData;
+import me.zyly.riska.core.repository.MarketDataRepository;
 import org.bridj.Pointer;
 import org.bridj.ann.Virtual;
 import org.bson.Document;
@@ -17,8 +18,9 @@ public class RiskaMdSpi extends CThostFtdcMdSpi {
     private @Setter String m_brokerID;
     private @Setter String m_userID;
     private @Setter String m_password;
-    private @Setter String marketDataID;
+    private @Setter String instrumentID;
     private @Setter CThostFtdcMdApi m_api;
+    private @Setter volatile MarketDataRepository marketDataRepository;
 
     /**
      * \u5f53\u5ba2\u6237\u7aef\u4e0e\u4ea4\u6613\u540e\u53f0\u5efa\u7acb\u8d77\u901a\u4fe1\u8fde\u63a5\u65f6\uff08\u8fd8\u672a\u767b\u5f55\u524d\uff09\uff0c\u8be5\u65b9\u6cd5\u88ab\u8c03\u7528\u3002<br>
@@ -66,8 +68,8 @@ public class RiskaMdSpi extends CThostFtdcMdSpi {
      */
     @Virtual(3)
     public void OnRspUserLogin(Pointer<CThostFtdcRspUserLoginField> pRspUserLogin, Pointer<CThostFtdcRspInfoField> pRspInfo, int nRequestID, boolean bIsLast) {
-        LOGGER.info( "OnRspUserLogin: ErrorCode: {}, ErrorMsg: {}, SubscribeMarketData: {}", pRspInfo.get().ErrorID(), toUTF8(pRspInfo.get().ErrorMsg()), marketDataID);
-        int nRet = this.m_api.SubscribeMarketData( Pointer.pointerToCStrings( marketDataID ) , 1 ) ;
+        LOGGER.info( "OnRspUserLogin: ErrorCode: {}, ErrorMsg: {}, SubscribeMarketData: {}", pRspInfo.get().ErrorID(), toUTF8(pRspInfo.get().ErrorMsg()), instrumentID);
+        int nRet = this.m_api.SubscribeMarketData( Pointer.pointerToCStrings(instrumentID) , 1 ) ;
         LOGGER.info( "SubscribeMarketData : {}", nRet );
     }
 
@@ -134,12 +136,13 @@ public class RiskaMdSpi extends CThostFtdcMdSpi {
         CThostFtdcDepthMarketDataField data = pDepthMarketData.get();
         LOGGER.debug( "OnRtnDepthMarketData : {}", ToString_CThostFtdcDepthMarketDataField(data));
         MarketData marketData = coverToStandardMD(data);
-        try {
-            Boot.dataTransporter.produce(marketData);
-        } catch (Exception e) {
-            LOGGER.error("produce market data error", e);
-        }
-        LOGGER.info("marketData: {}", marketData);
+//        try {
+//            Boot.dataTransporter.produce(marketData);
+//        } catch (Exception e) {
+//            LOGGER.error("produce market data error", e);
+//        }
+        marketDataRepository.save(marketData);
+        LOGGER.info("marketData saved!: {}", marketData);
     }
 
     private Document coverToDocument(CThostFtdcDepthMarketDataField data) {

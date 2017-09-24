@@ -12,6 +12,7 @@ public class SingleMarketData {
     private int highest;
     private int lowest;
     private int tradingDay;
+    private String time;
 
     public SingleMarketData(int price) {
         this.open = price;
