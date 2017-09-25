@@ -48,8 +48,6 @@ public class KLineService {
             }
             Scope scope = new Scope.Algorithm.IC().calculate(rate, data.get(0).getOpen());
             scope.setEqualsAlgorithm(equalsAlgorithm);
-            LOGGER.debug("first data: {}", data.get(0));
-            LOGGER.debug("first scope: {}", scope);
             while (cursor.hasNext()) {
                 BasicDBObject line = (BasicDBObject)cursor.next();
                 SingleMarketData current = castToMd(line, LAST_PRICE_FIELD_NAME);
@@ -76,21 +74,12 @@ public class KLineService {
         }else {
             if(scope.isEqualsAlgorithm() && scope.isForceAdd()) {
                 data.add(current);
-                int center = (current.getOpen() - parent.getOpen()) / scope.getRange() * scope.getRange() + parent.getOpen();
-                scope.setMin(center - scope.getRange());
-                scope.setMax(center + scope.getRange());
+                jumpScope(scope, current.getOpen(), scope.getCenter());
                 scope.setForceAdd(false);
                 return scope;
             }else {
                 if (current.getOpen() < scope.getMin() || current.getOpen() > scope.getMax()) {
-                    int center = (current.getOpen() - parent.getOpen()) / scope.getRange() * scope.getRange() + parent.getOpen();
-//                    LOGGER.debug("----------------------------第{}跟线------------------------------------------------------------------------------------------------------------------------------------", data.size());
-//                    LOGGER.debug("| 上一笔行情时间: {}, 上一笔开盘: {}, (低/高)区间: {}, 步长: {} ",
-//                            parent.getTime(), parent.getOpen(), String.format("(%s/%s)", scope.getMin(), scope.getMax()), scope.getRange());
-//                    LOGGER.debug("|   最新行情时间: {}, 最新开盘价: {}, (低/高)区间: {}, 中心点: {}",
-//                            current.getTime(), current.getOpen(), String.format("(%s/%s)", center - scope.getRange(), center + scope.getRange()), center);
-                    scope.setMin(center - scope.getRange());
-                    scope.setMax(center + scope.getRange());
+                    jumpScope(scope, current.getOpen(), parent.getOpen());
                     data.add(current);
                 } else if (scope.isEqualsAlgorithm() && (current.getOpen() == scope.getMin() || current.getOpen() == scope.getMax())) {
                     parent.setClose(current.getOpen());
@@ -115,6 +104,14 @@ public class KLineService {
 //        scope.setForceAdd(true);
 //        return scope;
 //    }
+    private Scope jumpScope(Scope scope, int currentPrice, int parentPrice) {
+        int m = (currentPrice - parentPrice) / scope.getRange();
+        int center = m * scope.getRange() + parentPrice;
+        scope.setMin(center - scope.getRange());
+        scope.setMax(center + scope.getRange());
+        scope.setCenter(center);
+        return scope;
+    }
     private SingleMarketData castToMd(BasicDBObject line, String priceFieldName) {
         String label = line.getInt("tradingDay") + " " + line.getString("updateTime");
         SingleMarketData singleMarketData = new SingleMarketData(label, line.getInt(priceFieldName));
