@@ -104,13 +104,12 @@ public class KLineService {
 //        scope.setForceAdd(true);
 //        return scope;
 //    }
-    private Scope jumpScope(Scope scope, int currentPrice, int parentPrice) {
+    private void jumpScope(Scope scope, int currentPrice, int parentPrice) {
         int m = (currentPrice - parentPrice) / scope.getRange();
         int center = m * scope.getRange() + parentPrice;
         scope.setMin(center - scope.getRange());
         scope.setMax(center + scope.getRange());
         scope.setCenter(center);
-        return scope;
     }
     private SingleMarketData castToMd(BasicDBObject line, String priceFieldName) {
         String label = line.getInt("tradingDay") + " " + line.getString("updateTime");
