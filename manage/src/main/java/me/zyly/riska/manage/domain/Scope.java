@@ -11,7 +11,6 @@ public class Scope {
     private int min;
     private int max;
     private int center;
-    private boolean equalsAlgorithm;
     //循环时遇到此条件强制调到下一个k线
     private boolean forceAdd = false;
     public enum Direction {
