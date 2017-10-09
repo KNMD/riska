@@ -87,10 +87,15 @@ public class KLineService {
                     }else {
                         int direction = current.getOpen() > parent.getOpen() ? 1 : 0;
                         if(offset < scope.getRange()) {
-                            scope.setCenter(direction == 1 ? current.getOpen() + scope.getRange() :
-                                    current.getOpen() - scope.getRange());
-                            scope.setMin(scope.getCenter() - scope.getRange());
-                            scope.setMax(scope.getCenter() + scope.getRange());
+                            int m = (current.getOpen() - parent.getOpen()) / scope.getRange();
+                            int center = m * scope.getRange() + parent.getOpen();
+                            scope.setMin(center - scope.getRange());
+                            scope.setMax(center + scope.getRange());
+                            scope.setCenter(center);
+//                            scope.setCenter(direction == 1 ? current.getOpen() + scope.getRange() :
+//                                    current.getOpen() - scope.getRange());
+//                            scope.setMin(scope.getCenter() - scope.getRange());
+//                            scope.setMax(scope.getCenter() + scope.getRange());
                         }else if (offset == scope.getRange()) {
                             data.add(current);
                         }else {
