@@ -85,6 +85,7 @@ public class KLineService {
                 data.add(current);
                 scope.setForceAdd(false);
             }else {
+                int direction = current.getOpen() > parent.getOpen() ? 1 : 0;
                 int offset = Math.abs(scope.getCenter() - current.getOpen()) - scope.getRange();
                 if(offset < 0) {
                     parent.setClose(current.getOpen());
@@ -97,41 +98,47 @@ public class KLineService {
                     if(current.getOpen() == scope.getMin() || current.getOpen() == scope.getMax()) {
                         parent.setClose(current.getOpen());
                         scope.setForceAdd(true);
-                    }
-                    int direction = current.getOpen() > parent.getOpen() ? 1 : 0;
-                    if(offset < scope.getRange()) {
-                        int before = scope.getCenter(), min = scope.getMin(), max = scope.getMax();
-                        scope.setCenter(direction == 1 ? scope.getCenter() + scope.getRange() : scope.getCenter() - scope.getRange());
-                        scope.setMin(scope.getCenter() - scope.getRange());
-                        scope.setMax(scope.getCenter() + scope.getRange());
-//                        LOGGER.debug("current before: {}, after: {}, min: {}, max: {}, current open: {}, label: {}",
-//                                before, scope.getCenter(), min, max, current.getOpen(), current.getLabel());
-                        if(!scope.isForceAdd()) {
-                            data.add(current);
-                        }
                     }else {
-                        int rollCount = offset / scope.getRange(), parentPrice = parent.getOpen();
-                        for(int i = 0 ; i < rollCount; i++) {
-                            int currentPrice = direction == 1 ? parentPrice + scope.getRange() * (i + 1) :
-                                    parentPrice - scope.getRange() * (i + 1) ;
-                            data.add(new SingleMarketData(current.getLabel() + " jump", currentPrice));
-                            parentPrice = currentPrice;
-                        }
                         data.add(current);
+                        while(offset > scope.getRange()) {
+                            int newPrice = direction == 1 ? current.getOpen() + scope.getRange() :
+                                    current.getOpen() - scope.getRange();
+                            current = createNewMD(newPrice, current);
+                            data.add(current);
+                            offset = offset - scope.getRange();
+//                            jumpScope(scope, current.getOpen(), parent.getOpen(), direction);
+                            scope.setCenter(direction == 1 ? scope.getCenter() + scope.getRange() :
+                                    scope.getCenter() - scope.getRange());
+                        }
                     }
+                    jumpScope(scope, current.getOpen(), parent.getOpen(), direction);
                 }
             }
         }
         return scope;
     }
 
-    @SuppressWarnings("unused")
-    private void jumpScope(Scope scope, int currentPrice, int parentPrice) {
-        int m = (currentPrice - parentPrice) / scope.getRange();
-        int center = m * scope.getRange() + parentPrice;
-        scope.setMin(center - scope.getRange());
-        scope.setMax(center + scope.getRange());
-        scope.setCenter(center);
+    private SingleMarketData createNewMD(int newPrice, SingleMarketData current) {
+        SingleMarketData singleMarketData = new SingleMarketData();
+        singleMarketData.setLabel(current.getLabel());
+        singleMarketData.setTradingDay(current.getTradingDay());
+        singleMarketData.setTime(current.getTime());
+        singleMarketData.setOpen(newPrice);
+        singleMarketData.setClose(newPrice);
+        singleMarketData.setHighest(newPrice);
+        singleMarketData.setLowest(newPrice);
+        return singleMarketData;
+    }
+
+
+    private void jumpScope(Scope scope, int currentPrice, int parentPrice, int direction) {
+//        int before = scope.getCenter(), min = scope.getMin(), max = scope.getMax();
+
+//                        LOGGER.debug("current before: {}, after: {}, min: {}, max: {}, current open: {}, label: {}",
+//                                before, scope.getCenter(), min, max, current.getOpen(), current.getLabel());
+        scope.setCenter(direction == 1 ? scope.getCenter() + scope.getRange() : scope.getCenter() - scope.getRange());
+        scope.setMin(scope.getCenter() - scope.getRange());
+        scope.setMax(scope.getCenter() + scope.getRange());
     }
 
     private SingleMarketData castToMd(BasicDBObject line, String priceFieldName, Map<String, Integer> offsetMap) {
